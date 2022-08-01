@@ -1,4 +1,8 @@
-public class Account {
+package Accounts;
+
+import People.Person;
+
+public class Account implements Accounts{
 
     private String accType;
     private Person person;

@@ -1,16 +1,19 @@
+package People;
+
 import java.util.Objects;
 
-public class Owner extends Person{
+public class Customer extends Person {
 
-    public Bank bank;
-    public Owner(String firstName, String lastName, Bank bank) {
+    public int id;
+
+    public Customer(String firstName, String lastName, int id) {
         super(firstName, lastName);
-        this.bank = bank;
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " " + bank.toString();
+        return firstName + " " + lastName + " " + id;
     }
 
     @Override
@@ -23,7 +26,7 @@ public class Owner extends Person{
             return false;
         }
 
-        final Owner other = (Owner) obj;
+        final Customer other = (Customer) obj;
         if (!Objects.equals(this.firstName, other.firstName)) {
             return false;
         }
@@ -32,7 +35,7 @@ public class Owner extends Person{
             return false;
         }
 
-        return Objects.equals(this.bank, other.bank);
+        return this.id == other.id;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class Owner extends Person{
         int hash = 3;
         hash = 53 * hash + (this.firstName != null ? this.firstName.hashCode() : 0);
         hash = 53 * hash + (this.lastName != null ? this.lastName.hashCode() : 0);
-        hash = 53 * hash + this.bank.bankId;
+        hash = 53 * hash + this.id;
         return hash;
     }
 

@@ -1,3 +1,5 @@
+package Documents;
+
 public class Rules {
 
     private String[] rules;

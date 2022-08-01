@@ -1,4 +1,6 @@
-public class Person {
+package People;
+
+public abstract class Person implements People{
 
     public String firstName;
     public String lastName;

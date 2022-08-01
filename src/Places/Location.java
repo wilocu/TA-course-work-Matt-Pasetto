@@ -1,4 +1,11 @@
-public class Location {
+package Places;
+
+import Documents.Rules;
+import People.Customer;
+import People.Employee;
+import People.Owner;
+
+public class Location implements Locations{
 
     private Employee[] employees;
     private Owner owner;
