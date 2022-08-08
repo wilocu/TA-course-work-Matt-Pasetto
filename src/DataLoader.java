@@ -15,6 +15,11 @@ public class DataLoader {
 
     private DataLoader() {}
 
+
+    public static void addCustomer(Customer customer) {
+        customers.add(customer);
+    }
+
     public static void loadData() {
         loadEmployees();
         loadOwner();
@@ -43,6 +48,15 @@ public class DataLoader {
         try {
             checkDataLoaded();
             return employees;
+        } catch (UnloadedExeption e) {
+            throw new UnloadedExeption(e.getMessage());
+        }
+    }
+
+    public static ArrayList<Customer> getCustomers() throws UnloadedExeption {
+        try {
+            checkDataLoaded();
+            return customers;
         } catch (UnloadedExeption e) {
             throw new UnloadedExeption(e.getMessage());
         }
