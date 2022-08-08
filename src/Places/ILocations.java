@@ -5,7 +5,7 @@ import People.Customer;
 import People.Employee;
 import People.Owner;
 
-public interface Locations {
+public interface ILocations {
     Employee[] getEmployees();
 
     void setEmployees(Employee[] employees);

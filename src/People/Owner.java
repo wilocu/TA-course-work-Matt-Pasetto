@@ -7,9 +7,8 @@ import java.util.Objects;
 public class Owner extends Person {
 
     public Bank bank;
-    public Owner(String firstName, String lastName, Bank bank) {
+    public Owner(String firstName, String lastName) {
         super(firstName, lastName);
-        this.bank = bank;
     }
 
     @Override
@@ -44,7 +43,6 @@ public class Owner extends Person {
         int hash = 3;
         hash = 53 * hash + (this.firstName != null ? this.firstName.hashCode() : 0);
         hash = 53 * hash + (this.lastName != null ? this.lastName.hashCode() : 0);
-        hash = 53 * hash + this.bank.bankId;
         return hash;
     }
 

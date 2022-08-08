@@ -3,7 +3,7 @@ package Documents;
 import People.Person;
 import Places.Bank;
 
-public class Document implements Documents{
+public class Document implements IDocuments {
 
     private String type;
     private int id;

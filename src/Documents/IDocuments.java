@@ -2,7 +2,7 @@ package Documents;
 
 import People.Person;
 
-public interface Documents {
+public interface IDocuments {
 
     String getDocType();
 

@@ -14,4 +14,5 @@ public class Bank extends Location {
         bankId = id;
     }
 
+
 }

@@ -1,6 +1,6 @@
 package Actions;
 
-public interface ActionType {
+public interface IActionType {
 
     boolean approved();
 

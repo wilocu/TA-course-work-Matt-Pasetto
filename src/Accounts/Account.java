@@ -2,7 +2,7 @@ package Accounts;
 
 import People.Person;
 
-public class Account implements Accounts{
+public class Account implements IAccounts {
 
     private String accType;
     private Person person;

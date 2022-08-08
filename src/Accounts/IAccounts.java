@@ -2,7 +2,7 @@ package Accounts;
 
 import People.Person;
 
-public interface Accounts {
+public interface IAccounts {
 
     String getAccType();
 

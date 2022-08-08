@@ -1,6 +1,6 @@
 package Actions;
 
-public final class Action implements ActionType{
+public final class Action implements IActionType {
 
     private final int actionId;
     private final int originId;

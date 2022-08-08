@@ -5,7 +5,7 @@ import People.Customer;
 import People.Employee;
 import People.Owner;
 
-public class Location implements Locations{
+public class Location implements ILocations {
 
     private Employee[] employees;
     private Owner owner;

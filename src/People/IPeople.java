@@ -1,6 +1,6 @@
 package People;
 
-public interface People {
+public interface IPeople {
 
     String getFirstName();
 

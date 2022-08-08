@@ -1,6 +1,6 @@
 package People;
 
-public abstract class Person implements People{
+public abstract class Person implements IPeople {
 
     public String firstName;
     public String lastName;
