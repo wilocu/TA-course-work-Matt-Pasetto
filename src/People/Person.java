@@ -10,6 +10,10 @@ public abstract class Person implements IPeople {
         this.lastName = lastName;
     }
 
+    public String personInfo(){
+        return firstName + " " + lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -1,11 +1,11 @@
 import Exeptions.UnloadedExeption;
 import People.Customer;
 import People.Person;
+import org.apache.log4j.Logger;
 
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Logger;
 
 public class Main {
 
@@ -16,7 +16,6 @@ public class Main {
         logger.info("Logger up and running");
 
         Scanner input = new Scanner(System.in);
-        boolean validInput = false;
 
         LinkedList<Person> profiles = new LinkedList<Person>();
 
@@ -41,7 +40,6 @@ public class Main {
 
     }
 
-    // for actual bank this would need to be unique numbers
     private static int newId() {
         return ThreadLocalRandom.current().nextInt(0, 100 + 1);
     }
