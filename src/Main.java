@@ -2,7 +2,6 @@ import Accounts.CustomerAcc;
 import Exeptions.UnloadedExeption;
 import People.Customer;
 import People.Owner;
-import People.Person;
 import Places.Bank;
 import org.apache.log4j.Logger;
 
