@@ -2,10 +2,9 @@ import Exeptions.UnloadedExeption;
 import People.Customer;
 import People.Employee;
 import People.Owner;
-import Places.Bank;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class DataLoader {
     private static final Logger logger = Logger.getLogger(DataLoader.class.getName());

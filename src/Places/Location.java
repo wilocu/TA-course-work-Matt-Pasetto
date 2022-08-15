@@ -19,6 +19,9 @@ public class Location implements ILocations {
         this.rules = rules;
     }
 
+    public Location(int id) {
+    }
+
     public Employee[] getEmployees() {
         return employees;
     }
