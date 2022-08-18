@@ -5,6 +5,7 @@ import People.Owner;
 import Places.Bank;
 import org.apache.log4j.Logger;
 
+import java.io.*;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -12,7 +13,49 @@ public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
-    public static void main(String[] args) throws UnloadedExeption {
+    public static void countWords() throws IOException {
+        //counters
+        int charsCount = 0;
+        int wordsCount = 0;
+        int linesCount = 0;
+
+        Scanner in = null;
+        File file = new File("C:\\Users\\matpa\\IdeaProjects\\BankClasses\\src\\Other\\wordsfile.txt");
+
+        try(Scanner scanner = new Scanner(new BufferedReader(new FileReader(file)))){
+
+            while (scanner.hasNextLine()) {
+
+                String tmpStr = scanner.nextLine();
+                if (!tmpStr.equalsIgnoreCase("")) {
+                    String replaceAll = tmpStr.replaceAll("\\s+", "");
+                    charsCount += replaceAll.length();
+                    wordsCount += tmpStr.split("\\s+").length;
+                }
+                ++linesCount;
+            }
+
+            File myObj = new File("C:\\Users\\matpa\\IdeaProjects\\BankClasses\\src\\Other\\results.txt");
+
+            try {
+                FileWriter myWriter = new FileWriter(myObj.getName());
+                myWriter.write("# of chars: " + charsCount);
+                myWriter.write("# of words: " + wordsCount);
+                myWriter.write("# of lines: " + linesCount);
+                myWriter.write("# of bytes: " + file.length());
+                myWriter.close();
+                System.out.println("Successfully wrote to the file.");
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    public static void main(String[] args) throws UnloadedExeption, IOException {
+
+        countWords();
 
         Bank bank = new Bank(1);
         bank.setOwner(new Owner("Matt", "Pasetto"));
