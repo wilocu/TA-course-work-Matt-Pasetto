@@ -183,7 +183,6 @@ public class Main {
                             }
                         }
                     }
-
                     break;
                 case EXIT_PROGRAM:
                     logger.info("");
