@@ -7,7 +7,8 @@ public enum Menu {
     DEPOSIT (3, "Deposit cash"),
     WITHDRAW  (4, "Withdraw cash"),
     TRANSFER  (5, "Transfers cash"),
-    EXIT_PROGRAM (6, "Exit program");
+    EXIT_PROGRAM (6, "Exit program"),
+    MAKE_DEADLOCK(7, "Makes a deadlock");
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 

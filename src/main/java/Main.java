@@ -6,15 +6,9 @@ import People.Owner;
 import Places.Bank;
 import org.apache.log4j.Logger;
 
-import java.awt.color.ICC_ColorSpace;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Main {
 
@@ -195,6 +189,12 @@ public class Main {
                     logger.info("");
                     logger.info("The bank is now closed");
                     exit = true;
+                    break;
+                case MAKE_DEADLOCK:
+                    TestThread.ThreadDemo1 T1 = new TestThread.ThreadDemo1();
+                    TestThread.ThreadDemo2 T2 = new TestThread.ThreadDemo2();
+                    T1.start();
+                    T2.start();
                     break;
             }
         } while (!exit);
