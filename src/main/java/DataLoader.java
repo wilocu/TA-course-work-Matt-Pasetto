@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 public class DataLoader {
-    private static final Logger logger = Logger.getLogger(DataLoader.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DataLoader.class.getName());
     public static ArrayList<Employee> employees = new ArrayList<>();
     public static ArrayList<Customer> customers = new ArrayList<>();
     public static Owner owner;
@@ -22,7 +22,7 @@ public class DataLoader {
     public static void loadData() {
         loadEmployees();
         loadOwner();
-        logger.info("Data loaded.");
+        LOGGER.info("Data loaded.");
     }
 
     private static void loadOwner() {
