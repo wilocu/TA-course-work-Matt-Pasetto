@@ -1,19 +1,26 @@
-import Accounts.CustomerAcc;
-import Exeptions.InvalidInputException;
-import Exeptions.UnloadedExeption;
-import People.Customer;
-import People.Owner;
-import Places.Bank;
+import accounts.EmployeeAcc;
+import other.DataLoader;
+import accounts.CustomerAcc;
+import exeptions.InvalidInputException;
+import exeptions.UnloadedExeption;
+import other.TestThread;
+import people.Customer;
+import people.Employee;
+import people.Owner;
+import places.Bank;
 import org.apache.log4j.Logger;
 
 import java.io.*;
+import java.lang.reflect.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
     private static ArrayList<CustomerAcc> accs = new ArrayList<>();
+    private static ArrayList<EmployeeAcc> eAccs = new ArrayList<>();
 
 
     public static void countWords() throws IOException {
@@ -56,11 +63,9 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws UnloadedExeption, IOException {
-        // TODO add to menu, bank information, employees...
-        // TODO add enum class
-        // TODO functional interface
-        // TODO rename packages to lowercase
+    public static void main(String[] args) throws UnloadedExeption, IOException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        // TODO functional interface (use at least 3)
+        // TODO reflection
 
         countWords();
 
@@ -74,6 +79,8 @@ public class Main {
         DataLoader.loadData();
         DataLoader.checkDataLoaded();
         DataLoader.getEmployees();
+
+        recruitEmployees();
 
         LOGGER.info("Welcome to the Bank of America, we are currently running a promotion, get 20$ when you open a new account with us.");
 
@@ -109,13 +116,28 @@ public class Main {
                 case LIST_ACCOUNTS:
                     LOGGER.info("");
                     if(accs.size() > 0){
-                        for (CustomerAcc c : accs) {
-                            LOGGER.info("Account Id: " + c.getId() + ". Account Balance: " + c.getBalance());
-                        }
+                        accs.forEach(c -> LOGGER.info("Account Id: " + c.getId() + ". Account Balance: " + c.getBalance()));
                     }
                     else{
                         LOGGER.info("You have no accounts");
                     }
+                    break;
+                case BANK_INFO:
+                    LOGGER.info("The Bank is called Bank of america");
+                    LOGGER.info("Bank ID: " + bank.bankId);
+                    LOGGER.info("Bank owner is: " + bank.getOwner().firstName + " " + bank.getOwner().lastName);
+                    break;
+                case EMPLOYEE_LIST:
+                    LOGGER.info("");
+                    LOGGER.info("");
+                    LOGGER.info("The following are the employees in the bank: ");
+                    for(int i = 0; i < eAccs.size(); i++){
+                        LOGGER.info("Name: " + eAccs.get(i).getPerson().firstName + " " + eAccs.get(i).getPerson().lastName);
+                        LOGGER.info("Phone Number: " + eAccs.get(i).phoneNumber);
+                        LOGGER.info("");
+                    }
+                    LOGGER.info("");
+                    LOGGER.info("");
                     break;
                 case DEPOSIT:
                     LOGGER.info("");
@@ -194,14 +216,33 @@ public class Main {
                     exit = true;
                     break;
                 case MAKE_DEADLOCK:
+                    new Thread(() -> {
+                        System.out.println("New threads created");
+                    }).start();
                     TestThread.ThreadDemo1 T1 = new TestThread.ThreadDemo1();
                     TestThread.ThreadDemo2 T2 = new TestThread.ThreadDemo2();
                     T1.start();
                     T2.start();
                     break;
+                case REFLECT:
+                    Employee emp1 = new Employee("Test", "Test", 10);
+                    Employee emp2 = Employee.class.getConstructor(String.class, String.class, int.class).newInstance("test2", "test2", 999);
+
+                    LOGGER.info("Normal employee: " + emp1.firstName + " " + emp1.getEmployeeId());
+                    LOGGER.info("New instanced employee: " + emp2.firstName + " " + emp2.getEmployeeId());
+                    break;
             }
         } while (!exit);
 
+    }
+
+    private static void recruitEmployees(){
+        ArrayList<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("John", "Smith", 1));
+        employees.add(new Employee("Alexa", "Montgomery", 2));
+        employees.add(new Employee("Alex", "Johnson", 3));
+        employees.add(new Employee("Mark", "Cruise", 4));
+        employees.forEach(e -> eAccs.add(new EmployeeAcc("employee",e, e.getEmployeeId(),1345972551)));
     }
 
     private static int newId() {

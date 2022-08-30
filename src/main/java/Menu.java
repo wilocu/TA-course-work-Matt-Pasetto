@@ -1,4 +1,4 @@
-import Exeptions.InvalidInputException;
+import exeptions.InvalidInputException;
 import org.apache.log4j.Logger;
 
 public enum Menu {
@@ -7,8 +7,11 @@ public enum Menu {
     DEPOSIT (3, "Deposit cash"),
     WITHDRAW  (4, "Withdraw cash"),
     TRANSFER  (5, "Transfers cash"),
-    EXIT_PROGRAM (6, "Exit program"),
-    MAKE_DEADLOCK(7, "Makes a deadlock");
+    BANK_INFO  (6, "Print bank info"),
+    EMPLOYEE_LIST  (7, "Print employee list"),
+    EXIT_PROGRAM (8, "Exit program"),
+    MAKE_DEADLOCK(9, "Makes a deadlock"),
+    REFLECT(10, "Reflection test");
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
