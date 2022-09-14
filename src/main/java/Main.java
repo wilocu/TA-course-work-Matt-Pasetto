@@ -13,7 +13,6 @@ import org.apache.log4j.Logger;
 import java.io.*;
 import java.lang.reflect.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -65,7 +64,6 @@ public class Main {
 
     public static void main(String[] args) throws UnloadedExeption, IOException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         // TODO functional interface (use at least 3)
-        // TODO reflection
 
         countWords();
 
