@@ -1,13 +1,13 @@
 package accounts;
 
-import people.Person;
+import people.People;
 
 public class EmployeeAcc extends Account {
 
     public long phoneNumber;
 
-    public EmployeeAcc(String accType, Person person, int id, long number) {
-        super(accType, person, id);
+    public EmployeeAcc(String accType, People people, int id, long number) {
+        super(accType, people, id);
         phoneNumber = number;
     }
 

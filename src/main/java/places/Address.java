@@ -1,4 +1,4 @@
-package people;
+package places;
 
 import java.util.Objects;
 import org.apache.log4j.Logger;
@@ -12,14 +12,11 @@ public class Address {
     private String state;
     private int zipcode;
 
-
     //Constructors
-    public Address() {
-    }
-    public Address(String saddress, String c, String s, int zip) {
-        streetAddress = saddress;
-        city = c;
-        state = s;
+    public Address(String streetAddress, String city, String state, int zip) {
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
         zipcode = zip;
     }
 

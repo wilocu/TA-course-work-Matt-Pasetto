@@ -1,6 +1,6 @@
 package accounts;
 
-import people.Person;
+import people.People;
 
 public interface IAccounts {
 
@@ -8,9 +8,9 @@ public interface IAccounts {
 
     void setAccType(String accType);
 
-    Person getPerson();
+    People getPerson();
 
-    void setPerson(Person person);
+    void setPerson(People people);
 
     int getId();
 

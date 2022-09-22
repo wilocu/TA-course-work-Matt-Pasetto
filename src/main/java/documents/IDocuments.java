@@ -1,6 +1,6 @@
 package documents;
 
-import people.Person;
+import people.People;
 
 public interface IDocuments {
 
@@ -8,9 +8,9 @@ public interface IDocuments {
 
     void setDocType(String docType);
 
-    Person getCustomer();
+    People getCustomer();
 
-    void setCustomer(Person person);
+    void setCustomer(People people);
 
     int getId();
 

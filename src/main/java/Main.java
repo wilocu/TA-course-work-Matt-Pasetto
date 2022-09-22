@@ -6,7 +6,6 @@ import exeptions.UnloadedExeption;
 import other.TestThread;
 import people.Customer;
 import people.Employee;
-import people.Owner;
 import places.Bank;
 import org.apache.log4j.Logger;
 
@@ -63,12 +62,10 @@ public class Main {
     }
 
     public static void main(String[] args) throws UnloadedExeption, IOException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        // TODO functional interface (use at least 3)
 
-        countWords();
+        //countWords();
 
         Bank bank = new Bank(1);
-        bank.setOwner(new Owner("Matt", "Pasetto"));
 
         LOGGER.info("Logger up and running");
 
@@ -122,8 +119,8 @@ public class Main {
                     break;
                 case BANK_INFO:
                     LOGGER.info("The Bank is called Bank of america");
-                    LOGGER.info("Bank ID: " + bank.bankId);
-                    LOGGER.info("Bank owner is: " + bank.getOwner().firstName + " " + bank.getOwner().lastName);
+                    LOGGER.info("Bank ID: " + bank.getId());
+                    //LOGGER.info("Bank owner is: " + bank.getOwner().firstName + " " + bank.getOwner().lastName); TODO
                     break;
                 case EMPLOYEE_LIST:
                     LOGGER.info("");

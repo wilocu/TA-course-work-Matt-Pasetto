@@ -1,7 +1,7 @@
 package dao_classes;
 
 import Utilities.ConnectionPool;
-import places.Address;
+import accounts.Accounts;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -9,14 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AddressDAO implements IDAO<Address>{
-    private static final Logger LOGGER = Logger.getLogger(AddressDAO.class.getName());
-    private static final String GET_BY_ID = "SELECT * FROM addresses WHERE id = ?;";
-    private static final String GET_ID_BY_ADDRESS = "SELECT * FROM addresses WHERE street = ? AND city = ? AND state = ? AND zipcode = ?;";
-    private static final String INSERT = "INSERT INTO addresses (street, city, state, zipcode) VALUES (?, ?, ?, ?);";
-    private static final String UPDATE = "UPDATE addresses SET street = ?, city = ?, state = ?, zipcode = ? WHERE id = ?;";
+public class AccountsDAO implements IDAO<Accounts> {
 
-    public Address getObjectByID(int id) throws SQLException {
+    private static final Logger LOGGER = Logger.getLogger(AccountsDAO.class.getName());
+    private static final String GET_BY_ID = "SELECT * FROM accounts WHERE id = ?;";
+    private static final String GET_ID_BY_ACCOUNT = "SELECT * FROM accounts WHERE balance = ? AND personID = ? AND interestRateID = ? AND actionLogId = ?;";
+    private static final String INSERT = "INSERT INTO accounts (balance, personID, interestRateID, actionLogId) VALUES (?, ?, ?, ?);";
+    private static final String UPDATE = "UPDATE accounts SET balance = ?, personID = ?, interestRateID = ?, actionLogId = ? WHERE id = ?;";
+
+    @Override
+    public Accounts getObjectByID(int id) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -25,9 +27,9 @@ public class AddressDAO implements IDAO<Address>{
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Address p = new Address(rs.getString("street"), rs.getString("city"), rs.getString("state"), rs.getInt("zipcode"));
-                p.setId(id);
-                return p;
+                Accounts acc = new Accounts(rs.getDouble(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
+                acc.setId(id);
+                return acc;
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -37,19 +39,20 @@ public class AddressDAO implements IDAO<Address>{
             ps.close();
             ConnectionPool.getInstance().returnConnection(c);
         }
-        throw new SQLException("No data with given ID");
+        throw new SQLException("No data matching the ID given");
     }
 
-    public int getIDbyObject(Address p) throws SQLException {
+    @Override
+    public int getIDbyObject(Accounts acc) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            ps = c.prepareStatement(GET_ID_BY_ADDRESS);
-            ps.setString(1, p.getStreetAddress());
-            ps.setString(2, p.getCity());
-            ps.setString(3, p.getState());
-            ps.setInt(4, p.getZipcode());
+            ps = c.prepareStatement(GET_ID_BY_ACCOUNT);
+            ps.setDouble(1, acc.getBalance());
+            ps.setInt(2, acc.getPersonId());
+            ps.setInt(3, acc.getInterestRateId());
+            ps.setInt(4, acc.getActionLogId());
             rs = ps.executeQuery();
             while (rs.next()) {
                 return rs.getInt("id");
@@ -62,18 +65,19 @@ public class AddressDAO implements IDAO<Address>{
             ps.close();
             ConnectionPool.getInstance().returnConnection(c);
         }
-        throw new SQLException("No ID with given object was found");
+        throw new SQLException("No data matching the Object given");
     }
 
-    public void create(Address p) throws SQLException {
+    @Override
+    public void create(Accounts acc) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(INSERT);
-            ps.setString(1, p.getStreetAddress());
-            ps.setString(2, p.getCity());
-            ps.setString(3, p.getState());
-            ps.setInt(4, p.getZipcode());
+            ps.setDouble(1, acc.getBalance());
+            ps.setInt(2, acc.getPersonId());
+            ps.setInt(3, acc.getInterestRateId());
+            ps.setInt(4, acc.getActionLogId());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -84,16 +88,17 @@ public class AddressDAO implements IDAO<Address>{
         }
     }
 
-    public void update(Address p) throws SQLException {
+    @Override
+    public void update(Accounts acc) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(UPDATE);
-            ps.setString(1, p.getStreetAddress());
-            ps.setString(2, p.getCity());
-            ps.setString(3, p.getState());
-            ps.setInt(4, p.getZipcode());
-            ps.setInt(5, p.getId());
+            ps.setDouble(1, acc.getBalance());
+            ps.setInt(2, acc.getPersonId());
+            ps.setInt(3, acc.getInterestRateId());
+            ps.setInt(4, acc.getActionLogId());
+            ps.setInt(5, acc.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -103,4 +108,5 @@ public class AddressDAO implements IDAO<Address>{
             ConnectionPool.getInstance().returnConnection(c);
         }
     }
+
 }

@@ -1,16 +1,16 @@
 package accounts;
 
-import people.Person;
+import people.People;
 
 public class Account implements IAccounts {
 
     private String accType;
-    private Person person;
+    private People people;
     private int id;
 
-    public Account(String accType, Person person, int id) {
+    public Account(String accType, People people, int id) {
         this.accType = accType;
-        this.person = person;
+        this.people = people;
         this.id = id;
     }
 
@@ -22,12 +22,12 @@ public class Account implements IAccounts {
         this.accType = accType;
     }
 
-    public Person getPerson() {
-        return person;
+    public People getPerson() {
+        return people;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setPerson(People people) {
+        this.people = people;
     }
 
     public int getId() {

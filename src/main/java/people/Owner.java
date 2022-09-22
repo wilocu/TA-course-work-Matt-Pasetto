@@ -4,7 +4,7 @@ import places.Bank;
 
 import java.util.Objects;
 
-public class Owner extends Person {
+public class Owner extends People {
 
     public Bank bank;
     public Owner(String firstName, String lastName) {

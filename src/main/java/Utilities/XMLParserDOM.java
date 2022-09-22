@@ -12,8 +12,8 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
 
-public class XmlParserDOM {
-    private static final Logger LOGGER = Logger.getLogger(XmlParserDOM.class.getName());
+public class XMLParserDOM {
+    private static final Logger LOGGER = Logger.getLogger(XMLParserDOM.class.getName());
 
     Schema schema;
 
@@ -35,7 +35,7 @@ public class XmlParserDOM {
             DocumentBuilder build = factory.newDocumentBuilder();
             doc = build.parse(xmlFile);
         } catch (Exception e) {
-            LOGGER.warn(e.getMessage() + "could not parse xml file");
+            LOGGER.warn(e.getMessage() + "xml file not parsable");
             return null;
         }
 
@@ -43,7 +43,7 @@ public class XmlParserDOM {
             Validator validator = schema.newValidator();
             validator.validate(new DOMSource(doc));
         } catch (Exception e) {
-            LOGGER.warn(e.getMessage() + "xml file could not be validated against schema");
+            LOGGER.warn(e.getMessage() + "xml file could not be validated with schema");
             return null;
         }
 

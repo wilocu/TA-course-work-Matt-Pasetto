@@ -1,13 +1,13 @@
 package accounts;
 
-import people.Person;
+import people.People;
 
 public class CustomerAcc extends Account {
 
     private double balance;
 
-    public CustomerAcc(String accType, Person person, int id) {
-        super(accType, person, id);
+    public CustomerAcc(String accType, People people, int id) {
+        super(accType, people, id);
         balance = 20; // promotion + 20 $
     }
 

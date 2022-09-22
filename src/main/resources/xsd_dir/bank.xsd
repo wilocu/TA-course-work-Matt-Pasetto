@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="bank">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bank" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="person_id" type="xs:int"/>
+                            <xs:element name="address_id" type="xs:int"/>
+                            <xs:element name="location_id" type="xs:int"/>
+                            <xs:element name="funds_id" type="xs:int"/>
+                            <xs:element name="security_id" type="xs:int"/>
+                            <xs:element name="armored_transport_id" type="xs:int"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:byte" name="id" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

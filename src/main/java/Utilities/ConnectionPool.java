@@ -66,7 +66,7 @@ public class ConnectionPool {
         } catch (NotConnectedExeption e) {
             LOGGER.warn(e.getMessage());
             try {
-                connectionPool.add(DriverManager.getConnection("jdbc:mysql://localhost:3306/BankClasses", "root", "ajdhteio"));
+                connectionPool.add(DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "testuser", "ajdhteio")); //TODO fix
             } catch (SQLException s) {
                 LOGGER.error(s.getMessage());
             }

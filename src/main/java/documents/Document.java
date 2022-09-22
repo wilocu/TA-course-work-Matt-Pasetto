@@ -1,16 +1,16 @@
 package documents;
 
-import people.Person;
+import people.People;
 import places.Bank;
 
 public class Document implements IDocuments {
 
     private String type;
     private int id;
-    private Person customer;
+    private People customer;
     private Bank bank;
 
-    public Document(String type, int id, Person customer, Bank bank){
+    public Document(String type, int id, People customer, Bank bank){
         this.type = type;
         this.id = id;
         this.customer = customer;
@@ -28,13 +28,13 @@ public class Document implements IDocuments {
     }
 
     @Override
-    public Person getCustomer() {
+    public People getCustomer() {
         return customer;
     }
 
     @Override
-    public void setCustomer(Person person) {
-        customer = person;
+    public void setCustomer(People people) {
+        customer = people;
     }
 
     @Override

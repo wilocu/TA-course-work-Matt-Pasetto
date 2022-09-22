@@ -2,7 +2,7 @@ package people;
 
 import java.util.Objects;
 
-public class Customer extends Person {
+public class Customer extends People {
 
     public int id;
 

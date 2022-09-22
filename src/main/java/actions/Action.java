@@ -1,35 +1,38 @@
 package actions;
 
-public final class Action implements IActionType {
+public final class Action {
 
-    private final int actionId;
-    private final int originId;
-    private final int desId;
+    private int id;
+    private String description;
+    private String actionType;
 
-    public Action(int actionId, int originId, int desId){
-        this.actionId = actionId;
-        this.originId = originId;
-        this.desId = desId;
+    public Action(int id, String description, String actionType) {
+        this.id = id;
+        this.description = description;
+        this.actionType = actionType;
     }
 
-    @Override
-    public boolean approved() {
-        //approve the action or don't approve it here
-        return true;
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public int getActionId() {
-        return actionId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Override
-    public int getOriginAccId() {
-        return originId;
+    public String getDescription() {
+        return description;
     }
 
-    @Override
-    public int getDestinationAccId() {
-        return desId;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
     }
 }

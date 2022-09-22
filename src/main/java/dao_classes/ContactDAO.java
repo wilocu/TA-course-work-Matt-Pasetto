@@ -1,7 +1,7 @@
 package dao_classes;
 
 import Utilities.ConnectionPool;
-import places.Address;
+import people.Contact;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -9,14 +9,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AddressDAO implements IDAO<Address>{
-    private static final Logger LOGGER = Logger.getLogger(AddressDAO.class.getName());
-    private static final String GET_BY_ID = "SELECT * FROM addresses WHERE id = ?;";
-    private static final String GET_ID_BY_ADDRESS = "SELECT * FROM addresses WHERE street = ? AND city = ? AND state = ? AND zipcode = ?;";
-    private static final String INSERT = "INSERT INTO addresses (street, city, state, zipcode) VALUES (?, ?, ?, ?);";
-    private static final String UPDATE = "UPDATE addresses SET street = ?, city = ?, state = ?, zipcode = ? WHERE id = ?;";
+public class ContactDAO implements IDAO<Contact>{
+    private static final Logger LOGGER = Logger.getLogger(ContactDAO.class.getName());
+    private static final String GET_BY_ID = "SELECT * FROM contacts WHERE id = ?;";
+    private static final String GET_ID_BY_CONTACT = "SELECT * FROM contacts WHERE personID = ? AND email = ? AND phone_number = ?;";
+    private static final String INSERT = "INSERT INTO contacts (personID, email, phone_number) VALUES (?, ?, ?);";
+    private static final String UPDATE = "UPDATE contacts SET personID = ?, email = ?, phone_number = ? WHERE id = ?;";
 
-    public Address getObjectByID(int id) throws SQLException {
+    @Override
+    public Contact getObjectByID(int id) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -25,9 +26,10 @@ public class AddressDAO implements IDAO<Address>{
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Address p = new Address(rs.getString("street"), rs.getString("city"), rs.getString("state"), rs.getInt("zipcode"));
-                p.setId(id);
-                return p;
+                Contact contact = new Contact(rs.getInt(1), rs.getString("email"),
+                        rs.getString("phone_number"));
+                contact.setId(id);
+                return contact;
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -37,19 +39,19 @@ public class AddressDAO implements IDAO<Address>{
             ps.close();
             ConnectionPool.getInstance().returnConnection(c);
         }
-        throw new SQLException("No data with given ID");
+        throw new SQLException("No data matching the ID given");
     }
 
-    public int getIDbyObject(Address p) throws SQLException {
+    @Override
+    public int getIDbyObject(Contact contact) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            ps = c.prepareStatement(GET_ID_BY_ADDRESS);
-            ps.setString(1, p.getStreetAddress());
-            ps.setString(2, p.getCity());
-            ps.setString(3, p.getState());
-            ps.setInt(4, p.getZipcode());
+            ps = c.prepareStatement(GET_ID_BY_CONTACT);
+            ps.setInt(1, contact.getPersonId());
+            ps.setString(2, contact.getEmail());
+            ps.setString(3, contact.getPhoneNumber());
             rs = ps.executeQuery();
             while (rs.next()) {
                 return rs.getInt("id");
@@ -62,18 +64,18 @@ public class AddressDAO implements IDAO<Address>{
             ps.close();
             ConnectionPool.getInstance().returnConnection(c);
         }
-        throw new SQLException("No ID with given object was found");
+        throw new SQLException("No data matching the Object given");
     }
 
-    public void create(Address p) throws SQLException {
+    @Override
+    public void create(Contact contact) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(INSERT);
-            ps.setString(1, p.getStreetAddress());
-            ps.setString(2, p.getCity());
-            ps.setString(3, p.getState());
-            ps.setInt(4, p.getZipcode());
+            ps.setInt(1, contact.getPersonId());
+            ps.setString(2, contact.getEmail());
+            ps.setString(3, contact.getPhoneNumber());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -84,16 +86,16 @@ public class AddressDAO implements IDAO<Address>{
         }
     }
 
-    public void update(Address p) throws SQLException {
+    @Override
+    public void update(Contact contact) throws SQLException {
         Connection c = ConnectionPool.getInstance().getConnection();
         PreparedStatement ps = null;
         try {
             ps = c.prepareStatement(UPDATE);
-            ps.setString(1, p.getStreetAddress());
-            ps.setString(2, p.getCity());
-            ps.setString(3, p.getState());
-            ps.setInt(4, p.getZipcode());
-            ps.setInt(5, p.getId());
+            ps.setInt(1, contact.getPersonId());
+            ps.setString(2, contact.getEmail());
+            ps.setString(3, contact.getPhoneNumber());
+            ps.setInt(4, contact.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());

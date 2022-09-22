@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<contacts>
+    <contact id="1">
+        <person_id>1</person_id>
+        <email>test@gmail</email>
+        <phone_number>138375465</phone_number>
+    </contact>
+    <contact id="2">
+        <person_id>2</person_id>
+        <email>test2@gmail</email>
+        <phone_number>238375465</phone_number>
+    </contact>
+    <contact id="3">
+        <person_id>3</person_id>
+        <email>test3@gmail</email>
+        <phone_number>338375465</phone_number>
+    </contact>
+    <contact id="4">
+        <person_id>4</person_id>
+        <email>test4@gmail</email>
+        <phone_number>438375465</phone_number>
+    </contact>
+
+</contacts>

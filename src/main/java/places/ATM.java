@@ -1,38 +1,24 @@
 package places;
 
-import org.apache.log4j.Logger;
+public class ATM {
 
-public class Bank {
-
-    private static final Logger LOGGER = Logger.getLogger(Bank.class.getName());
-
-    private int id;
+    private int atmId;
     private int personId;
     private int addressId;
     private int locationId;
     private int fundsId;
     private int securityId;
-    private int armoredTransportId;
 
-    public Bank(int personId, int addressId, int locationId, int fundsId, int securityId, int armoredTransportId) {
-        this.personId = personId;
-        this.addressId = addressId;
-        this.locationId = locationId;
-        this.fundsId = fundsId;
-        this.securityId = securityId;
-        this.armoredTransportId = armoredTransportId;
+    public ATM(int atmId) {
+        this.atmId = atmId;
     }
 
-    public Bank(int id) {
-        this.id = id;
+    public int getAtmId() {
+        return atmId;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setAtmId(int atmId) {
+        this.atmId = atmId;
     }
 
     public int getPersonId() {
@@ -73,13 +59,5 @@ public class Bank {
 
     public void setSecurityId(int securityId) {
         this.securityId = securityId;
-    }
-
-    public int getArmoredTransportId() {
-        return armoredTransportId;
-    }
-
-    public void setArmoredTransportId(int armoredTransportId) {
-        this.armoredTransportId = armoredTransportId;
     }
 }

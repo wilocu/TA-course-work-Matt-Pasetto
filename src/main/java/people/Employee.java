@@ -4,7 +4,7 @@ import accounts.EmployeeAcc;
 
 import java.util.Objects;
 
-public class Employee extends Person {
+public class Employee extends People {
 
     private int employeeId;
     private EmployeeAcc acc;

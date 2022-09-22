@@ -1,57 +1,29 @@
 package places;
 
-import documents.Rules;
-import people.Customer;
-import people.Employee;
-import people.Owner;
 
-public class Location implements ILocations {
+public class Location {
 
-    private Employee[] employees;
-    private Owner owner;
-    private Customer[] customers;
-    private Rules rules;
+    private int locationId;
+    private int locationType;
 
-    public Location(Employee[] employees, Owner owner, Customer[] customers, Rules rules) {
-        this.employees = employees;
-        this.owner = owner;
-        this.customers = customers;
-        this.rules = rules;
+    public Location(int locationId, int locationType) {
+        this.locationId = locationId;
+        this.locationType = locationType;
     }
 
-    public Location(int id) {
+    public int getLocationId() {
+        return locationId;
     }
 
-    public Employee[] getEmployees() {
-        return employees;
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 
-    public void setEmployees(Employee[] employees) {
-        this.employees = employees;
+    public int getLocationType() {
+        return locationType;
     }
 
-    public Owner getOwner() {
-        return owner;
+    public void setLocationType(int locationType) {
+        this.locationType = locationType;
     }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public Customer[] getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(Customer[] customers) {
-        this.customers = customers;
-    }
-
-    public Rules getRules() {
-        return rules;
-    }
-
-    public void setRules(Rules rules) {
-        this.rules = rules;
-    }
-
 }
