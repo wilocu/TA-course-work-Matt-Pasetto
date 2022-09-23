@@ -1,0 +1,20 @@
+[
+  {
+    "street": "37 Road AV",
+    "city": "Bedford",
+    "state": "NY",
+    "zipcode": 28946
+  },
+  {
+    "street": "44 Mark ST",
+    "city": "Philadelphia",
+    "state": "PA",
+    "zipcode": 34812
+  },
+  {
+    "street": "362 Fox ln",
+    "city": "Stevens",
+    "state": "NJ",
+    "zipcode": 97834
+  }
+]
