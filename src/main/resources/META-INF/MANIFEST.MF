@@ -1,1 +1,1 @@
-Main-Class: Main
+com.solvd.bankclasses.MainOLD-Class: com.solvd.bankclasses.MainOLD

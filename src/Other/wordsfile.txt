@@ -1,17 +1,17 @@
-At the time of its construction in 1892, this facility was named Main Building. In 2002, it was renamed the
+At the time of its construction in 1892, this facility was named com.solvd.bankclasses.MainOLD Building. In 2002, it was renamed the
 "Silver Center of Arts & Science" in honor of Julius Silver, an alumnus of the College of Arts & Science,
 who bequeathed $150 million to the college. Renovations have dramatically improved the facility while maintaining
-the building's many historic features. Main Building previously served as the home of NYU's Washington Square
+the building's many historic features. com.solvd.bankclasses.MainOLD Building previously served as the home of NYU's Washington Square
 College until all undergraduate liberal arts education was consolidated at the Washington Square in 1973 after
 the sale of the University Heights campus in the Bronx.
 
 The current building was designed by Alfred Zucker, a German born and trained architect, in 1892.
 It replaced architects' Town, Davis & Dakin's original Gothic Revival structure from 1835. Zucker
-maintained the foundation and many other features of the original university building but not the
-Gothic facade, partially for sake of historic continuity. Today, NYU owns nine other buildings
+maintained the foundation and many com.solvd.bankclasses.other features of the original university building but not the
+Gothic facade, partially for sake of historic continuity. Today, NYU owns nine com.solvd.bankclasses.other buildings
 designed by Zucker that were built in this formerly commercial area, as lofts and wholesale stores.
 The Brown Building of Science (formerly the Asch Building) and the Waverly Building occupy the same
 block as the Silver Center. The Brown Building was the site of the Triangle Shirtwaist Factory fire,
 which generated many of New York City's current labor laws. The three buildings are internally connected
 at the ground floor as well as by stairway and elevator (with the idiosyncrasy of adjacent floors that
-do not correspond by floor number.) The three buildings are known are the "Main block."
+do not correspond by floor number.) The three buildings are known are the "com.solvd.bankclasses.MainOLD block."

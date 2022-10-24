@@ -1,0 +1,20 @@
+## Default ignored files
+/shelf/
+/.idea
+*.class
+/workspace.xml
+BankClasses.iml
+
+## Sensitive information
+db.properties
+
+## target folder at the top level of the project structue and paths and contents underneath it
+target/
+target/*
+## target folder at any level of the project structue
+**/target
+/target
+
+## personalized text files
+logs.log
+results.txt.txt

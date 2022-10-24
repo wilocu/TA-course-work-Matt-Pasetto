@@ -15,13 +15,13 @@
     </account>
     <account id="3">
         <balance>90</balance>
-        <person_id>2</person_id>
+        <person_id>3</person_id>
         <interest_rate_id>2</interest_rate_id>
         <action_log_id>2</action_log_id>
     </account>
     <account id="4">
         <balance>100</balance>
-        <person_id>2</person_id>
+        <person_id>3</person_id>
         <interest_rate_id>2</interest_rate_id>
         <action_log_id>2</action_log_id>
     </account>
