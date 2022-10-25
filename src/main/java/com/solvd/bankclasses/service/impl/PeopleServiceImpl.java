@@ -49,6 +49,20 @@ public class PeopleServiceImpl implements PeopleService {
         return p;
     }
 
+    public People addCustomerForTest() {
+        String nameF = "testF";
+        String nameL = "testL";
+
+        People p = new People(nameF, nameL);
+
+        try {
+            p.setId(peopleDAOimpl.create(p));
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
+        return p;
+    }
+
     @Override
     public List<People> parseFromXmlDOM(String schemaName, String xmlName) {
         peopleParser.loadSchema(schemaName);
