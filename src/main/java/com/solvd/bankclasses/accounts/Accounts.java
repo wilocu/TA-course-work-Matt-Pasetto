@@ -27,14 +27,14 @@ public class Accounts {
     private int actionLogId;
 
     public Accounts(double balance, int personId, int intrestRateId, int actionLogId) {
-        this.balance = balance;
+        this.balance = balance + 20;
         this.personId = personId;
         this.interestRateId = intrestRateId;
         this.actionLogId = actionLogId;
     }
 
     public Accounts(double balance, int personId){
-        this.balance = balance;
+        this.balance = balance + 20;
         this.personId = personId;
         interestRateId = 0;
         actionLogId =0;
@@ -83,4 +83,14 @@ public class Accounts {
     public void setActionLogId(int actionLogId) {
         this.actionLogId = actionLogId;
     }
+
+    public void addBalance(double balance) {
+        this.balance += balance;
+    }
+
+    public void subtractBalance(double balance) {
+        this.balance -= balance;
+    }
+
+
 }
